@@ -49,7 +49,7 @@ class SingleColorPalette extends Component {
 				<Navbar changeFormat={this.changeFormat} showSlider={false} />
 				<div className='Palette-colors'>
 					{colorBoxes}
-					<div className='go-back ColorBox'>
+					<div className='go-back'>
 						<Link to={`/palette/${id}`} className='back-button'>
 							Go Back
 						</Link>
