@@ -3,6 +3,48 @@ import Navbar from './Navbar';
 import PaletteFooter from './PaletteFooter';
 import ColorBox from './ColorBox';
 import { Link } from 'react-router-dom';
+import { withStyles } from '@material-ui/styles';
+
+const styles = {
+	palette: {
+		height: '100vh',
+		display: 'flex',
+		flexDirection: 'column'
+	},
+	colors: {
+		height: '90%'
+	},
+	goBack: {
+		backgroundColor: 'black',
+		width: '20%',
+		height: '50%',
+		margin: '0 auto',
+		display: 'inline-block',
+		position: 'relative',
+		cursor: 'pointer',
+		marginBottom: '-3.5px',
+		'& a': {
+			width: '100px',
+			height: '30px',
+			position: 'absolute',
+			display: 'inline-block',
+			top: '50%',
+			left: '50%',
+			marginTop: '-15px',
+			marginLeft: '-50px',
+			textAlign: 'center',
+			outline: 'none',
+			background: 'rgba(255, 255, 255, 0.3)',
+			fontSize: '1rem',
+			lineHeight: '20px',
+			color: 'white',
+			textTransform: 'uppercase',
+			border: 'none',
+			textDecoration: 'none',
+			lineHeight: '27px'
+		}
+	}
+};
 
 class SingleColorPalette extends Component {
 	constructor(props) {
@@ -35,6 +77,7 @@ class SingleColorPalette extends Component {
 
 	render() {
 		const { colorFormat } = this.state;
+		const { classes } = this.props;
 		const { paletteName, emoji, id } = this.props.palette;
 		const colorBoxes = this._shade.map(color => (
 			<ColorBox
@@ -45,14 +88,12 @@ class SingleColorPalette extends Component {
 			/>
 		));
 		return (
-			<div className='SingleColorPalette Palette'>
+			<div className={classes.palette}>
 				<Navbar changeFormat={this.changeFormat} showSlider={false} />
-				<div className='Palette-colors'>
+				<div className={classes.colors}>
 					{colorBoxes}
-					<div className='go-back'>
-						<Link to={`/palette/${id}`} className='back-button'>
-							Go Back
-						</Link>
+					<div className={classes.goBack}>
+						<Link to={`/palette/${id}`}>Go Back</Link>
 					</div>
 				</div>
 				<PaletteFooter paletteName={paletteName} emoji={emoji} />
@@ -61,4 +102,4 @@ class SingleColorPalette extends Component {
 	}
 }
 
-export default SingleColorPalette;
+export default withStyles(styles)(SingleColorPalette);
