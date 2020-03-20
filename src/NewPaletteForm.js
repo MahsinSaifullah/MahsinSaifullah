@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import clsx from 'clsx';
-import { withStyles, useTheme } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -10,8 +10,10 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import Button from '@material-ui/core/Button';
+import { ChromePicker } from 'react-color';
 
-const drawerWidth = 240;
+const drawerWidth = 400;
 
 const styles = theme => ({
 	root: {
@@ -124,6 +126,19 @@ class NewPaletteForm extends Component {
 						</IconButton>
 					</div>
 					<Divider />
+					<Typography variant='h4'>Design Your Palette</Typography>
+					<div>
+						<Button variant='contained' color='secondary'>
+							Clear Palette
+						</Button>
+						<Button variant='contained' color='primary'>
+							Random Color
+						</Button>
+					</div>
+					<ChromePicker />
+					<Button variant='contained' color='primary'>
+						Add Color
+					</Button>
 				</Drawer>
 				<main
 					className={clsx(classes.content, {
