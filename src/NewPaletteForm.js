@@ -123,6 +123,12 @@ class NewPaletteForm extends Component {
 		this.props.history.push('/');
 	};
 
+	removeBox = colorName => {
+		this.setState({
+			colors: this.state.colors.filter(color => color.name !== colorName)
+		});
+	};
+
 	componentDidMount() {
 		ValidatorForm.addValidationRule('isColorNameUnique', value => {
 			return this.state.colors.every(
@@ -248,7 +254,13 @@ class NewPaletteForm extends Component {
 					<div className={classes.drawerHeader} />
 
 					{colors.map(color => {
-						return <DraggableColorBox color={color} />;
+						return (
+							<DraggableColorBox
+								key={color.name}
+								color={color}
+								handleRemove={() => this.removeBox(color.name)}
+							/>
+						);
 					})}
 				</main>
 			</div>
