@@ -109,6 +109,17 @@ class NewPaletteForm extends Component {
 		this.setState({ newColorName: evt.target.value, newColor: '' });
 	};
 
+	handleNewPaletteSubmit = () => {
+		const newName = 'Test Palette';
+		const newPalette = {
+			paletteName: newName,
+			id: newName.toLowerCase().replace(/ /g, '-'),
+			colors: this.state.colors
+		};
+		this.props.savePalette(newPalette);
+		this.props.history.push('/');
+	};
+
 	componentDidMount() {
 		// custom rule will have name 'isPasswordMatch'
 		ValidatorForm.addValidationRule('isColorNameUnique', value => {
@@ -132,6 +143,7 @@ class NewPaletteForm extends Component {
 				<CssBaseline />
 				<AppBar
 					position='fixed'
+					color='default'
 					className={clsx(classes.appBar, {
 						[classes.appBarShift]: open
 					})}
@@ -149,6 +161,13 @@ class NewPaletteForm extends Component {
 						<Typography variant='h6' noWrap>
 							Persistent drawer
 						</Typography>
+						<Button
+							variant='contained'
+							color='primary'
+							onClick={this.handleNewPaletteSubmit}
+						>
+							Save Palette
+						</Button>
 					</Toolbar>
 				</AppBar>
 				<Drawer
