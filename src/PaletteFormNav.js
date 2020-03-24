@@ -66,7 +66,7 @@ class PaletteFormNav extends Component {
 		} = this.props;
 		const { newPaletteName } = this.state;
 		return (
-			<div>
+			<div className={classes.root}>
 				<CssBaseline />
 				<AppBar
 					position='fixed'
@@ -89,7 +89,7 @@ class PaletteFormNav extends Component {
 							Create a Palette
 						</Typography>
 					</Toolbar>
-					<div className={classes.root}>
+					<div className={classes.navButtons}>
 						<ValidatorForm
 							onSubmit={() => handleNewPaletteSubmit(newPaletteName)}
 						>
