@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PaletteMetaForm from './PaletteMetaForm';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -8,7 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Button from '@material-ui/core/Button';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { withStyles } from '@material-ui/core/styles';
 
 const drawerWidth = 400;
@@ -43,14 +43,6 @@ class PaletteFormNav extends Component {
 		newPaletteName: ''
 	};
 
-	componentDidMount() {
-		ValidatorForm.addValidationRule('isPaletteNameUnique', value => {
-			return this.props.palettes.every(
-				palette => palette.paletteName.toLowerCase() !== value.toLowerCase()
-			);
-		});
-	}
-
 	handleNameChange = evt => {
 		this.setState({
 			[evt.target.name]: evt.target.value
@@ -61,10 +53,11 @@ class PaletteFormNav extends Component {
 		const {
 			open,
 			classes,
+			palettes,
 			handleDrawerOpen,
 			handleNewPaletteSubmit
 		} = this.props;
-		const { newPaletteName } = this.state;
+
 		return (
 			<div className={classes.root}>
 				<CssBaseline />
@@ -90,21 +83,10 @@ class PaletteFormNav extends Component {
 						</Typography>
 					</Toolbar>
 					<div className={classes.navButtons}>
-						<ValidatorForm
-							onSubmit={() => handleNewPaletteSubmit(newPaletteName)}
-						>
-							<TextValidator
-								label='Palette Name'
-								name='newPaletteName'
-								value={newPaletteName}
-								onChange={this.handleNameChange}
-								validators={['required', 'isPaletteNameUnique']}
-								errorMessages={['Enter a Palette Name', 'Name already taken']}
-							/>
-							<Button variant='contained' color='primary' type='submit'>
-								Save Palette
-							</Button>
-						</ValidatorForm>
+						<PaletteMetaForm
+							handleNewPaletteSubmit={handleNewPaletteSubmit}
+							palettes={palettes}
+						/>
 						<Link to='/'>
 							<Button variant='contained' color='secondary'>
 								Go Back
