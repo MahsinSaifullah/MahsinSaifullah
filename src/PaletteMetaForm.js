@@ -10,16 +10,7 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 class PaletteMetaForm extends Component {
 	state = {
-		open: true,
 		newPaletteName: ''
-	};
-
-	handleClickOpen = () => {
-		this.setState({ open: true });
-	};
-
-	handleClickClose = () => {
-		this.setState({ open: false });
 	};
 
 	handleNameChange = evt => {
@@ -38,11 +29,11 @@ class PaletteMetaForm extends Component {
 
 	render() {
 		const { open, newPaletteName } = this.state;
-		const { handleNewPaletteSubmit } = this.props;
+		const { handleNewPaletteSubmit, handleHideForm } = this.props;
 		return (
 			<Dialog
-				open={open}
-				onClose={this.handleClickClose}
+				open={true}
+				onClose={handleHideForm}
 				aria-labelledby='form-dialog-title'
 			>
 				<DialogTitle id='form-dialog-title'>Choose a Palette Name</DialogTitle>
@@ -64,7 +55,7 @@ class PaletteMetaForm extends Component {
 						/>
 					</DialogContent>
 					<DialogActions>
-						<Button onClick={this.handleClickClose} color='primary'>
+						<Button onClick={handleHideForm} color='primary'>
 							Cancel
 						</Button>
 						<Button variant='contained' color='primary' type='submit'>
