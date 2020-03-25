@@ -1,14 +1,18 @@
+import sizes from './sizes';
 export default {
 	Navbar: {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'flex-start',
-		height: '6vh'
+		height: '6vh',
+		[sizes.down('md')]: {
+			paddingLeft: '10px'
+		}
 	},
 	logo: {
 		marginRight: '15px',
 		padding: '0 13px',
-		fontSize: '22px',
+		fontSize: '20px',
 		backgroundColor: '#eceff1',
 		fontFamily: 'Roboto',
 		height: '100%',
@@ -17,6 +21,9 @@ export default {
 		'& a': {
 			textDecoration: 'none',
 			color: 'black'
+		},
+		[sizes.down('md')]: {
+			display: props => props.showSlider && 'none'
 		}
 	},
 	slider: {
@@ -38,6 +45,9 @@ export default {
 			height: '13px',
 			marginLeft: '-7px',
 			marginTop: '-3px'
+		},
+		[sizes.down('xs')]: {
+			width: '200px'
 		}
 	},
 	selectContainer: {
