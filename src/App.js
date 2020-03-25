@@ -8,15 +8,33 @@ import SingleColorPalette from './SingleColorPalette';
 import NewPaletteForm from './NewPaletteForm';
 
 class App extends Component {
-	state = {
-		palettes: seedColors
-	};
+	constructor(props) {
+		super(props);
+		const savedPalettes = JSON.parse(window.localStorage.getItem('palettes'));
+		this.state = {
+			palettes: savedPalettes || seedColors
+		};
+	}
+
 	findPalette = id => {
 		return this.state.palettes.find(palette => palette.id === id);
 	};
 	savePalette = newPalette => {
-		this.setState({ palettes: [...this.state.palettes, newPalette] });
+		this.setState(
+			{ palettes: [...this.state.palettes, newPalette] },
+			this.syncLocalStorage
+		);
 	};
+
+	syncLocalStorage = () => {
+		window.localStorage.setItem(
+			'palettes',
+			JSON.stringify(this.state.palettes)
+		);
+
+		console.log(window.localStorage.getItem('palettes'));
+	};
+
 	render() {
 		const { palettes } = this.state;
 		return (
