@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import PaletteFooter from './PaletteFooter';
 import ColorBox from './ColorBox';
 import { Link } from 'react-router-dom';
-import styles from './styles/PaletteStyles';
+import styles from '../styles/PaletteStyles';
 import { withStyles } from '@material-ui/styles';
 
 class SingleColorPalette extends Component {

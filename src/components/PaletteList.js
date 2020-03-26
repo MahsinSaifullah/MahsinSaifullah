@@ -13,7 +13,7 @@ import { blue, red } from '@material-ui/core/colors';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import styles from './styles/PaletteListStyles';
+import styles from '../styles/PaletteListStyles';
 
 class PaletteList extends Component {
 	state = {

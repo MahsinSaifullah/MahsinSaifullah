@@ -1,4 +1,4 @@
-import sizes from './sizes';
+import sizes from '../helpers/sizes';
 export default {
 	Navbar: {
 		display: 'flex',

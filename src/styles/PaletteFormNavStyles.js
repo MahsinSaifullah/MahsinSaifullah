@@ -1,5 +1,5 @@
-import { DRAWER_WIDTH } from '../constants';
-import sizes from './sizes';
+import { DRAWER_WIDTH } from '../helpers/constants';
+import sizes from '../helpers/sizes';
 
 const drawerWidth = DRAWER_WIDTH;
 

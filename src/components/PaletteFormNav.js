@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import styles from './styles/PaletteFormNavStyles';
+import styles from '../styles/PaletteFormNavStyles';
 
 class PaletteFormNav extends Component {
 	state = {
