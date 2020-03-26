@@ -1,11 +1,23 @@
 import sizes from './sizes';
+import bg from './bg.svg';
 export default {
 	root: {
-		backgroundColor: 'purple',
+		backgroundColor: '#330033',
+		backgroundImage: `url(${bg})`,
 		height: '100vh',
 		display: 'flex',
 		alignItems: 'flex-start',
-		justifyContent: 'center'
+		justifyContent: 'center',
+		overflow: 'scroll'
+	},
+	heading: {
+		fontSize: '2rem',
+		[sizes.down('xs')]: {
+			fontSize: '1.5rem'
+		},
+		[sizes.down('xxs')]: {
+			fontSize: '1.3rem'
+		}
 	},
 	container: {
 		width: '50%',
@@ -27,6 +39,9 @@ export default {
 		},
 		[sizes.down('xs')]: {
 			width: '50%'
+		},
+		[sizes.down('xs')]: {
+			width: '60%'
 		}
 	},
 	nav: {
