@@ -11,7 +11,8 @@ export default {
 		}
 	},
 	root: {
-		backgroundColor: '#330033',
+		/* background by SVGBackgrounds.com */
+		backgroundColor: '#394bad',
 		backgroundImage: `url(${bg})`,
 		height: '100vh',
 		display: 'flex',
@@ -21,6 +22,7 @@ export default {
 	},
 	heading: {
 		fontSize: '2rem',
+		textShadow: ' 1px 2px black',
 		[sizes.down('xs')]: {
 			fontSize: '1.5rem'
 		},
