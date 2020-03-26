@@ -40,8 +40,6 @@ class App extends Component {
 			'palettes',
 			JSON.stringify(this.state.palettes)
 		);
-
-		console.log(window.localStorage.getItem('palettes'));
 	};
 
 	render() {
