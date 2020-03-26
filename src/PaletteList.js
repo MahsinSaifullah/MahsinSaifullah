@@ -52,7 +52,7 @@ class PaletteList extends Component {
 									{...palette}
 									key={palette.id}
 									deletePalette={this.openDialogue}
-									handleClick={() => this.gotoRoute(palette.id)}
+									handleClick={this.gotoRoute}
 								/>
 							</CSSTransition>
 						))}
